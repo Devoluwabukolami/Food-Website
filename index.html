@@ -1,458 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mama Unique Kitchen | Order Nigerian Food</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mama Unique Kitchen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="header">
-    <div class="logo">
-        <span>🍲</span>
-        <div>
-            <h2>Mama Unique</h2>
-            <small>Kitchen</small>
-        </div>
-    </div>
+<header>
+  <a href="#home" class="logo">🍲 Mama Unique <span>Kitchen</span></a>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#how">How It Works</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#how">How to Order</a>
+  </nav>
 
-    <button class="cart-btn" onclick="openCart()">
-        🛒 Cart <span id="cartCount">0</span>
-    </button>
+  <button class="cart-button" onclick="showCart()">
+    🛒 Cart <b id="cart-count">0</b>
+  </button>
 </header>
 
 
 <!-- HOME -->
+<section id="home" class="hero">
 
-<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="tag">AUTHENTIC NIGERIAN FOOD</p>
 
-    <div class="hero-text">
+    <h1>Good food.<br><span>Good mood.</span></h1>
 
-        <p class="welcome">WELCOME TO MAMA UNIQUE KITCHEN</p>
+    <p>
+      Freshly prepared Nigerian meals, soups, rice and proteins.
+      Order your favourite meal from Mama Unique Kitchen.
+    </p>
 
-        <h1>
-            Delicious Nigerian Food,
-            <span>Made With Love.</span>
-        </h1>
+    <button class="primary-btn" onclick="goToMenu()">
+      Order Now 🍽️
+    </button>
+  </div>
 
-        <p>
-            Freshly prepared meals, soups, rice and proteins.
-            Order your favourite Nigerian dishes and enjoy them
-            at home, school or work.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#menu" class="main-btn">Order Food 🍽️</a>
-            <a href="#how" class="outline-btn">How It Works</a>
-        </div>
-
-        <div class="features">
-            <div>🔥 Freshly Cooked</div>
-            <div>🚴 Delivery Available</div>
-            <div>🥡 Pickup Available</div>
-        </div>
-
-    </div>
-
-    <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=80">
-    </div>
+  <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=1000&q=85" alt="Nigerian food">
+  </div>
 
 </section>
 
 
 <!-- MENU -->
+<section id="menu">
 
-<section class="menu-section" id="menu">
+  <div class="section-title">
+    <p>OUR MENU</p>
+    <h2>What would you like to eat?</h2>
+    <span>Tap a meal to start your order.</span>
+  </div>
 
-    <div class="section-heading">
-        <p>OUR MENU</p>
-        <h2>What Are You Ordering Today? 😋</h2>
-        <span>Choose your meal and add it to your order.</span>
-    </div>
+  <div class="categories">
+    <button class="active" onclick="filterMenu('all', this)">All</button>
+    <button onclick="filterMenu('rice', this)">Rice</button>
+    <button onclick="filterMenu('soup', this)">Soups</button>
+    <button onclick="filterMenu('swallow', this)">Swallow</button>
+    <button onclick="filterMenu('protein', this)">Proteins</button>
+  </div>
 
-    <div class="categories">
-        <button class="category active" onclick="filterFood('all')">All</button>
-        <button class="category" onclick="filterFood('rice')">Rice</button>
-        <button class="category" onclick="filterFood('soup')">Soups</button>
-        <button class="category" onclick="filterFood('swallow')">Swallow</button>
-        <button class="category" onclick="filterFood('protein')">Proteins</button>
-    </div>
-
-    <div class="food-grid" id="foodGrid"></div>
-
-</section>
-
-
-<!-- HOW IT WORKS -->
-
-<section class="how" id="how">
-
-    <div class="section-heading">
-        <p>HOW TO ORDER</p>
-        <h2>Ordering Is Easy</h2>
-    </div>
-
-    <div class="steps">
-
-        <div class="step">
-            <div>1</div>
-            <h3>Choose Your Food</h3>
-            <p>Browse our menu and select what you want.</p>
-        </div>
-
-        <div class="step">
-            <div>2</div>
-            <h3>Customize Your Order</h3>
-            <p>Select your quantity, protein and preferences.</p>
-        </div>
-
-        <div class="step">
-            <div>3</div>
-            <h3>Choose Delivery</h3>
-            <p>Select delivery or pickup and provide your details.</p>
-        </div>
-
-        <div class="step">
-            <div>4</div>
-            <h3>Make Payment</h3>
-            <p>Pay by bank transfer and confirm your order.</p>
-        </div>
-
-    </div>
+  <div id="menu-list" class="menu-grid"></div>
 
 </section>
 
 
-<!-- CONTACT -->
+<!-- HOW TO ORDER -->
+<section id="how" class="how-section">
 
-<section class="contact" id="contact">
+  <div class="section-title">
+    <p>HOW IT WORKS</p>
+    <h2>Order in 4 easy steps</h2>
+  </div>
 
-    <h2>Hungry? Let's Get Your Food Ready 🍲</h2>
+  <div class="steps">
 
-    <p>Questions about your order?</p>
+    <div>
+      <strong>01</strong>
+      <h3>Choose your food</h3>
+      <p>Select whatever you want from our menu.</p>
+    </div>
 
-    <a
-        class="whatsapp"
-        href="https://wa.me/2348161683794?text=Hello%20Mama%20Unique%20Kitchen%2C%20I%20want%20to%20make%20an%20order."
-        target="_blank">
-        💬 WhatsApp Us
-    </a>
+    <div>
+      <strong>02</strong>
+      <h3>Customize</h3>
+      <p>Select your spoon/portion and protein.</p>
+    </div>
+
+    <div>
+      <strong>03</strong>
+      <h3>Checkout</h3>
+      <p>Choose delivery or pickup and enter your details.</p>
+    </div>
+
+    <div>
+      <strong>04</strong>
+      <h3>Pay & confirm</h3>
+      <p>Transfer to our Opay account and confirm your order.</p>
+    </div>
+
+  </div>
 
 </section>
 
 
-<footer>
-    <h3>Mama Unique Kitchen</h3>
-    <p>Delicious Nigerian meals made with love ❤️</p>
-    <small>© 2026 Mama Unique Kitchen</small>
-</footer>
+<!-- ORDER SCREEN -->
+<div id="order-screen" class="screen">
 
+  <div class="screen-box">
 
-<!-- FOOD MODAL -->
+    <button class="back-button" onclick="closeOrder()">← Back to Menu</button>
 
-<div class="modal" id="foodModal">
+    <div class="order-layout">
 
-    <div class="modal-box">
+      <img id="order-image" class="order-image">
 
-        <button class="close" onclick="closeFood()">×</button>
+      <div class="order-details">
 
-        <img id="modalImage">
+        <p class="tag">YOUR SELECTION</p>
 
-        <h2 id="modalName"></h2>
+        <h2 id="order-name"></h2>
 
-        <p id="modalDescription"></p>
+        <p id="order-description"></p>
 
-        <div class="price">
-            From ₦<span id="modalPrice"></span>
+        <h3 class="choose-title">Choose portion</h3>
+
+        <div class="portion-buttons">
+
+          <button onclick="selectPortion(1, this)">
+            1 Spoon
+            <small id="price1"></small>
+          </button>
+
+          <button onclick="selectPortion(2, this)">
+            2 Spoons
+            <small id="price2"></small>
+          </button>
+
+          <button onclick="selectPortion(3, this)">
+            3 Spoons
+            <small id="price3"></small>
+          </button>
+
         </div>
 
-        <label>How many portions?</label>
 
-        <div class="quantity">
-            <button onclick="changeQuantity(-1)">−</button>
-            <span id="quantity">1</span>
-            <button onclick="changeQuantity(1)">+</button>
+        <h3 class="choose-title">Choose protein</h3>
+
+        <div class="protein-options">
+
+          <label>
+            <input type="radio" name="protein" value="0" data-name="No extra protein" checked>
+            No extra protein
+          </label>
+
+          <label>
+            <input type="radio" name="protein" value="1000" data-name="Chicken">
+            Chicken <b>+₦1,000</b>
+          </label>
+
+          <label>
+            <input type="radio" name="protein" value="1500" data-name="Fish">
+            Fish <b>+₦1,500</b>
+          </label>
+
+          <label>
+            <input type="radio" name="protein" value="1200" data-name="Beef">
+            Beef <b>+₦1,200</b>
+          </label>
+
+          <label>
+            <input type="radio" name="protein" value="1800" data-name="Turkey">
+            Turkey <b>+₦1,800</b>
+          </label>
+
         </div>
 
-        <label>Choose your protein</label>
 
-        <select id="proteinSelect">
-            <option value="0">No extra protein</option>
-            <option value="1000">Chicken + ₦1,000</option>
-            <option value="1500">Fish + ₦1,500</option>
-            <option value="1200">Beef + ₦1,200</option>
-            <option value="1800">Turkey + ₦1,800</option>
-        </select>
+        <div class="order-quantity">
 
-        <button class="add-btn" onclick="addToCart()">
-            Add To Order 🛒
+          <span>Number of portions</span>
+
+          <div>
+            <button onclick="changeOrderQuantity(-1)">−</button>
+            <b id="order-quantity">1</b>
+            <button onclick="changeOrderQuantity(1)">+</button>
+          </div>
+
+        </div>
+
+
+        <div class="order-total">
+          <span>Total</span>
+          <strong>₦<b id="order-total">3,000</b></strong>
+        </div>
+
+        <button class="primary-btn full" onclick="addToCart()">
+          Add To Cart 🛒
         </button>
 
+      </div>
+
     </div>
+
+  </div>
 
 </div>
 
 
-<!-- CART -->
+<!-- CART SCREEN -->
+<div id="cart-screen" class="screen">
 
-<div class="side-panel" id="cartPanel">
+  <div class="screen-box small-box">
 
-    <div class="panel-header">
-        <h2>Your Order</h2>
-        <button onclick="closeCart()">×</button>
-    </div>
+    <button class="back-button" onclick="closeCart()">← Continue Shopping</button>
 
-    <div id="cartItems"></div>
+    <h2>Your Order</h2>
 
-    <div class="cart-total">
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+
+      <div>
+        <span>Food total</span>
+        <b>₦<span id="food-total">0</span></b>
+      </div>
+
+      <div>
+        <span>Delivery</span>
+        <b>₦<span id="delivery-total">0</span></b>
+      </div>
+
+      <hr>
+
+      <div class="grand-total">
         <span>Total</span>
-        <strong>₦<span id="cartTotal">0</span></strong>
+        <b>₦<span id="grand-total">0</span></b>
+      </div>
+
     </div>
 
-    <button class="checkout-btn" onclick="checkout()">
-        Proceed To Checkout →
+    <button class="primary-btn full" onclick="openCheckout()">
+      Continue To Checkout →
     </button>
 
-</div>
-
-
-<!-- CHECKOUT -->
-
-<div class="modal" id="checkoutModal">
-
-    <div class="modal-box checkout-box">
-
-        <button class="close" onclick="closeCheckout()">×</button>
-
-        <h2>Checkout</h2>
-
-        <p class="small">
-            Enter your details so we can prepare your order.
-        </p>
-
-        <label>Your Name</label>
-        <input id="customerName" type="text" placeholder="Enter your name">
-
-        <label>Phone Number</label>
-        <input id="customerPhone" type="tel" placeholder="08012345678">
-
-        <label>How would you like to receive your food?</label>
-
-        <div class="delivery-options">
-
-            <button onclick="selectDelivery('delivery')" id="deliveryBtn">
-                🚴 Delivery
-            </button>
-
-            <button onclick="selectDelivery('pickup')" id="pickupBtn">
-                🥡 Pickup
-            </button>
-
-        </div>
-
-        <div id="addressBox">
-
-            <label>Delivery Address</label>
-
-            <textarea
-                id="customerAddress"
-                placeholder="Enter your delivery address"></textarea>
-
-        </div>
-
-        <label>Preferred Time</label>
-
-        <select id="orderTime">
-            <option>As soon as possible</option>
-            <option>12:00 PM</option>
-            <option>1:00 PM</option>
-            <option>2:00 PM</option>
-            <option>3:00 PM</option>
-            <option>4:00 PM</option>
-            <option>5:00 PM</option>
-            <option>6:00 PM</option>
-        </select>
-
-        <button class="checkout-btn" onclick="continuePayment()">
-            Continue To Payment →
-        </button>
-
-    </div>
+  </div>
 
 </div>
 
 
-<!-- PAYMENT -->
+<!-- CHECKOUT SCREEN -->
+<div id="checkout-screen" class="screen">
 
-<div class="modal" id="paymentModal">
+  <div class="screen-box small-box">
 
-    <div class="modal-box">
+    <button class="back-button" onclick="closeCheckout()">← Back to Cart</button>
 
-        <button class="close" onclick="closePayment()">×</button>
+    <h2>Checkout</h2>
 
-        <div class="payment-icon">🏦</div>
+    <p class="subtitle">Tell us where to bring your food.</p>
 
-        <h2>Bank Transfer</h2>
+    <label>Your Name</label>
+    <input id="customer-name" type="text" placeholder="e.g. Bukola Esther">
 
-        <p>Transfer the exact amount to the account below.</p>
+    <label>Phone Number</label>
+    <input id="customer-phone" type="tel" placeholder="08161683794">
 
-        <div class="bank-details">
 
-            <div>
-                <span>Bank</span>
-                <strong>Opay</strong>
-            </div>
+    <label>How do you want your food?</label>
 
-            <div>
-                <span>Account Name</span>
-                <strong>Obisakin Bukola Esther</strong>
-            </div>
+    <div class="receive-options">
 
-            <div>
-                <span>Account Number</span>
-                <strong>8161683694</strong>
-            </div>
+      <button id="delivery-option" class="selected" onclick="chooseReceive('delivery')">
+        🚴 Delivery
+      </button>
 
-            <div class="amount">
-                <span>Amount To Pay</span>
-                <strong>₦<span id="paymentAmount">0</span></strong>
-            </div>
-
-        </div>
-
-        <p class="payment-note">
-            After making the transfer, click the button below
-            to confirm your order.
-        </p>
-
-        <button class="checkout-btn" onclick="confirmOrder()">
-            ✓ I've Made The Payment
-        </button>
+      <button id="pickup-option" onclick="chooseReceive('pickup')">
+        🥡 Pickup
+      </button>
 
     </div>
+
+
+    <div id="address-container">
+
+      <label>Delivery Address</label>
+
+      <textarea id="customer-address" placeholder="Enter your address"></textarea>
+
+    </div>
+
+
+    <label>Preferred Time</label>
+
+    <select id="order-time">
+      <option>As soon as possible</option>
+      <option>12:00 PM</option>
+      <option>1:00 PM</option>
+      <option>2:00 PM</option>
+      <option>3:00 PM</option>
+      <option>4:00 PM</option>
+      <option>5:00 PM</option>
+      <option>6:00 PM</option>
+    </select>
+
+
+    <button class="primary-btn full" onclick="goToPayment()">
+      Continue To Payment →
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- PAYMENT SCREEN -->
+<div id="payment-screen" class="screen">
+
+  <div class="screen-box small-box">
+
+    <button class="back-button" onclick="closePayment()">← Back</button>
+
+    <div class="payment-icon">🏦</div>
+
+    <h2>Bank Transfer</h2>
+
+    <p class="subtitle">
+      Transfer the exact amount below.
+    </p>
+
+
+    <div class="bank-card">
+
+      <div>
+        <span>Bank</span>
+        <strong>Opay</strong>
+      </div>
+
+      <div>
+        <span>Account Name</span>
+        <strong>Obisakin Bukola Esther</strong>
+      </div>
+
+      <div>
+        <span>Account Number</span>
+        <strong>8161683694</strong>
+      </div>
+
+      <div class="pay-amount">
+        <span>Amount to pay</span>
+        <strong>₦<b id="payment-total">0</b></strong>
+      </div>
+
+    </div>
+
+
+    <div class="warning">
+      ⚠️ Please transfer the exact amount before confirming your order.
+    </div>
+
+
+    <button class="primary-btn full" onclick="confirmOrder()">
+      I Have Made The Payment ✓
+    </button>
+
+  </div>
 
 </div>
 
 
 <!-- CONFIRMATION -->
+<div id="confirmation-screen" class="screen">
 
-<div class="modal" id="confirmationModal">
+  <div class="screen-box small-box confirmation">
 
-    <div class="modal-box confirmation">
+    <div class="success">✓</div>
 
-        <div class="success-icon">✓</div>
+    <h2>Order Confirmed!</h2>
 
-        <h2>Order Confirmed! 🎉</h2>
+    <p>Your order has been received successfully.</p>
 
-        <p>Your order has been received successfully.</p>
+    <div class="order-number">
+      Order Number
+      <strong id="order-number"></strong>
+    </div>
 
-        <div class="order-number">
-            Order Number:
-            <strong id="orderNumber"></strong>
-        </div>
 
-        <div class="confirmation-info">
+    <div class="confirmation-details">
 
-            <p>👤 <span id="confirmName"></span></p>
+      <p>👤 <b id="confirm-name"></b></p>
 
-            <p>📱 <span id="confirmPhone"></span></p>
+      <p>📱 <b id="confirm-phone"></b></p>
 
-            <p>📦 <span id="confirmMethod"></span></p>
+      <p>📦 <b id="confirm-method"></b></p>
 
-        </div>
-
-        <button class="checkout-btn" onclick="trackOrder()">
-            Track My Order →
-        </button>
-
-        <a
-            class="whatsapp"
-            id="orderWhatsapp"
-            target="_blank">
-            💬 WhatsApp Us
-        </a>
-
-        <button class="back-home" onclick="backHome()">
-            ← Back Home
-        </button>
+      <p>💰 ₦<b id="confirm-total"></b></p>
 
     </div>
+
+
+    <button class="primary-btn full" onclick="showTracking()">
+      Track My Order →
+    </button>
+
+    <a id="whatsapp-order" class="whatsapp full">
+      💬 WhatsApp Us
+    </a>
+
+    <button class="home-button" onclick="backHome()">
+      ← Back Home
+    </button>
+
+  </div>
 
 </div>
 
 
-<!-- TRACK ORDER -->
+<!-- TRACKING -->
+<div id="tracking-screen" class="screen">
 
-<div class="modal" id="trackingModal">
+  <div class="screen-box small-box">
 
-    <div class="modal-box">
+    <button class="back-button" onclick="closeTracking()">← Back</button>
 
-        <button class="close" onclick="closeTracking()">×</button>
+    <h2>Track Your Order</h2>
 
-        <h2>Track Your Order</h2>
+    <p class="subtitle">
+      Order <b id="tracking-number"></b>
+    </p>
 
-        <p>
-            Order <strong id="trackingNumber"></strong>
-        </p>
 
-        <div class="tracking">
+    <div class="timeline">
 
-            <div class="track active">
-                <span>✓</span>
-                <div>
-                    <strong>Order Received</strong>
-                    <small>Your order has been received.</small>
-                </div>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="track">
-                <span>2</span>
-                <div>
-                    <strong>Food Being Prepared</strong>
-                    <small>Our kitchen is preparing your meal.</small>
-                </div>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="track">
-                <span>3</span>
-                <div>
-                    <strong>Ready / Out For Delivery</strong>
-                    <small>Your food is almost ready.</small>
-                </div>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="track">
-                <span>4</span>
-                <div>
-                    <strong>Completed</strong>
-                    <small>Enjoy your meal! ❤️</small>
-                </div>
-            </div>
-
+      <div class="timeline-item active">
+        <span>✓</span>
+        <div>
+          <strong>Order Received</strong>
+          <p>Your order has been received.</p>
         </div>
+      </div>
+
+      <div class="timeline-item">
+        <span>2</span>
+        <div>
+          <strong>Food Being Prepared</strong>
+          <p>Your food is being prepared.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span>3</span>
+        <div>
+          <strong>Ready / Out for Delivery</strong>
+          <p>Your food is ready.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span>4</span>
+        <div>
+          <strong>Completed</strong>
+          <p>Enjoy your meal! ❤️</p>
+        </div>
+      </div>
 
     </div>
 
+  </div>
+
 </div>
+
+
+<!-- FLOATING WHATSAPP -->
+<a
+  href="https://wa.me/2348161683794?text=Hello%20Mama%20Unique%20Kitchen%2C%20I%20want%20to%20make%20an%20order."
+  target="_blank"
+  class="floating-whatsapp">
+  💬
+</a>
+
+
+<footer>
+  <h3>Mama Unique Kitchen</h3>
+  <p>Authentic Nigerian food made with love ❤️</p>
+  <p>WhatsApp: 08161683794</p>
+</footer>
 
 
 <script src="script.js"></script>
 
 </body>
-</html>s
+</html>
